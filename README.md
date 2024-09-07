@@ -135,3 +135,7 @@ A menu can be triggered with default triggers:
 * On mobile device, single **tap with four fingers** with open or close menu
 
 Additionally, you can add your own triggers by calling `MenuTriggerService.RegisterTrigger`
+
+Fork change:
+call `UndebuggerRoot.Initialize();` to enable and `UndebuggerRoot.Destroy();` to destroy the root object
+https://github.com/kkostenkov/Undebugger/pull/1
