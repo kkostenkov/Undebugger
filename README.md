@@ -139,3 +139,4 @@ Additionally, you can add your own triggers by calling `MenuTriggerService.Regis
 Fork change:
 call `UndebuggerRoot.Initialize();` to enable and `UndebuggerRoot.Destroy();` to destroy the root object
 https://github.com/kkostenkov/Undebugger/pull/1
+To populate cheats on platfroms that don't support reflection added `MenuTriggerService.SelfRegisteredMenuHandlers`

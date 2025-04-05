@@ -47,7 +47,7 @@ namespace Undebugger.Model.Builder
             });
         }
 
-        public MenuModel Build()
+        public MenuModel Build(List<IDebugMenuHandler> selfRegisteredMenuHandlers)
         {
             var model = new MenuModel();
 
@@ -56,6 +56,8 @@ namespace Undebugger.Model.Builder
             model.Status.Segments.Add(Status.Builtin.DeviceInfoStatusSegment.Instance);
 
             AddBehaviourTypesOptions(model);
+
+            AddSelfRegisteredHandlers(model, selfRegisteredMenuHandlers);
 
             lock (preloadingLock)
             {
@@ -104,6 +106,13 @@ namespace Undebugger.Model.Builder
                 }
 
                 AddTypeOptions(model, data, behaviour);
+            }
+        }
+
+        private void AddSelfRegisteredHandlers(MenuModel model, List<IDebugMenuHandler> selfRegisteredMenuHandlers)
+        {
+            foreach (var handler in selfRegisteredMenuHandlers) {
+                handler.OnBuildingModel(model);
             }
         }
 

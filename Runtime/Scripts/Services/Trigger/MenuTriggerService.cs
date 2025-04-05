@@ -46,6 +46,7 @@ namespace Undebugger.Services.Trigger
         }
 
         private List<MenuTriggerDelegate> triggers = new List<MenuTriggerDelegate>(capacity: 3);
+        public static List<IDebugMenuHandler> SelfRegisteredMenuHandlers = new();
         private static MenuModelBuilder builder;
 
         private void Awake()
@@ -74,7 +75,7 @@ namespace Undebugger.Services.Trigger
             }
             else if ((triggerAction & MenuTriggerAction.Open) != 0 && !isOpen)
             {
-                UIService.Instance.OpenMenu(builder.Build());
+                UIService.Instance.OpenMenu(builder.Build(SelfRegisteredMenuHandlers));
             }
         }
 
